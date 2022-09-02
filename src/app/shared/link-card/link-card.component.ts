@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Bookmark } from 'src/app/core/services/bookmark.model';
 
 @Component({
   selector: 'app-link-card',
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./link-card.component.scss']
 })
 export class LinkCardComponent implements OnInit {
+
+  @Input() bookmark: Bookmark | undefined;
+  @Input() editable: boolean = true;
+  @Input() bookmarkList: Bookmark[] | undefined;
 
   constructor() { }
 

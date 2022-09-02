@@ -9,14 +9,16 @@ import { BookmarksService } from 'src/app/core/services/bookmarks.service';
 })
 export class ThanksComponent implements OnInit {
 
-  public lastBookmark!: Bookmark | null;
+  public lastBookmark: Bookmark | null;
+  public bookmarkList: Bookmark[] | null;
 
-  constructor(private bookmarkService: BookmarksService,
-  ) { }
+  constructor(private bookmarkService: BookmarksService) {
+    this.lastBookmark = this.bookmarkService.lastBookmark;
+    this.bookmarkList = this.bookmarkService.getList();
+  }
 
   ngOnInit(): void {
-    this.lastBookmark = this.bookmarkService.lastBookmark;
-    console.info(this.lastBookmark)
+    
   }
 
 }

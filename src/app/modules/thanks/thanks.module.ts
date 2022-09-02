@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ThanksRoutingModule } from './thanks-routing.module';
 import { ThanksComponent } from './thanks.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -11,6 +12,7 @@ import { ThanksComponent } from './thanks.component';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     ThanksRoutingModule
   ]
 })

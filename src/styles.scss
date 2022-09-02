@@ -1,4 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+@import './app/styles/variables.scss';
+
 body {
-    margin: 0;
+    margin     : 0;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+    font-size  : 14px;
+}
+
+.card {
+    display         : flex;
+    flex-direction  : column;
+    text-align      : center;
+    align-items     : center;
+    max-width       : 30em;
+    padding         : 1em 2em;
+    border-radius   : 10px;
+    background-color: $background;
+    color           : $accent;
+}
+
+button {
+    box-sizing     : border-box;
+    position       : relative;
+    user-select    : none;
+    cursor         : pointer;
+    outline        : none;
+    border         : none;
+    display        : inline-block;
+    white-space    : nowrap;
+    text-decoration: none;
+    vertical-align : baseline;
+    text-align     : center;
+    margin         : 0;
+    min-width      : 64px;
+    line-height    : 36px;
+    padding        : 0 16px;
+    border-radius  : 4px;
+    overflow       : visible;
+    color          : white;
+    font-family    : Roboto, Helvetica Neue, sans-serif;
+    font-size      : 14px;
+}
+
+.primary-bg {
+    background-color: $primary;
+}
+
+.secondary-bg {
+    background-color: $secondary;
 }

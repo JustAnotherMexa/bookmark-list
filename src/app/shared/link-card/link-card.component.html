@@ -1,1 +1,9 @@
-<p>link-card works!</p>
+<div class="card" *ngIf="bookmark">
+    <a href="bookmark.url" target="_blank" rel="noopener noreferrer">
+        {{ bookmark.url }}
+    </a>
+    <div class="buttons" *ngIf="editable">
+        <button class="primary-bg">Edit</button>
+        <button class="secondary-bg">Delete</button>
+    </div>
+</div>

@@ -1,6 +1,8 @@
-<div class="thank-you-container">
-    <h2>Thank you for your submission</h2>
-    <ng-container *ngIf="lastBookmark !== null">
-        <p>{{ lastBookmark.url }}</p>
-    </ng-container>
-</div>
+<ng-container *ngIf="lastBookmark">
+    <div class="card">
+        <h2>Thank you for your submission</h2>
+        <a [routerLink]="['/']" routerLinkActive="router-link-active"> Go back to your Dashboard</a>
+    </div>
+    
+    <app-link-card [bookmark]="lastBookmark" [editable]="false" ></app-link-card>
+</ng-container>
