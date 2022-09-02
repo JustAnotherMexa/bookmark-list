@@ -37,6 +37,7 @@ export class BookmarksService {
     tempList.forEach((bookmark: { url: string }) => {
       this.bookmarkList.push(new Bookmark(bookmark['url']))
     });
+    console.info(this.bookmarkList)
   }
 
   addBookmark(url: string) {

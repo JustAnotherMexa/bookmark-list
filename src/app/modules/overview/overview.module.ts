@@ -6,6 +6,7 @@ import { OverviewComponent } from './overview/overview.component';
 import { FormComponent } from './form/form.component';
 import { LinkListComponent } from './link-list/link-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     CommonModule,
+    SharedModule,
     ReactiveFormsModule,
     OverviewRoutingModule,
   ]

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Bookmark } from 'src/app/core/services/bookmark.model';
 
 @Component({
   selector: 'app-link-list',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LinkListComponent implements OnInit {
 
+  @Input() bookmarkList: Bookmark[] = [];
+
   constructor() { }
 
   ngOnInit(): void {
+    console.info(this.bookmarkList)
   }
 
 }

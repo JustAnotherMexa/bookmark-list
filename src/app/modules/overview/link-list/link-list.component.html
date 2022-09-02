@@ -1,0 +1,5 @@
+<ng-container *ngIf="bookmarkList">
+    <ng-container *ngFor="let bookmark of bookmarkList">
+        <app-link-card [bookmark]="bookmark" [editable]="false" ></app-link-card>
+    </ng-container>
+</ng-container>
