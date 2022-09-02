@@ -1,0 +1,14 @@
+<form [formGroup]="bookmarkForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group">
+      <label>Enter URL</label>
+      <input type="text" formControlName="url" class="form-control mb-2">
+      <div *ngIf="controls['url'].touched && controls['url'].invalid" class="alert alert-danger">
+        <div *ngIf="controls['url'].errors!['required']">Please provide url</div>
+        <div *ngIf="controls['url'].errors!['pattern']">Please provide valid url</div>
+        <div *ngIf="controls['url'].errors!['repeat']">The url provided already exists in your list</div>
+      </div>
+    </div>
+    <div class="d-grid mt-3">
+      <button class="btn btn-dark" [disabled]="!bookmarkForm['valid']" type="submit">Save</button>
+    </div>
+  </form>
