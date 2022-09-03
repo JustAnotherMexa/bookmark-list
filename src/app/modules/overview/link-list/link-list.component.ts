@@ -17,6 +17,10 @@ export class LinkListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * Updates the visibleList, have to run detectChanges to avoid NG0100 error: https://angular.io/errors/NG0100
+   * @param list paginated bokomark list coming from pagination component
+   */
   updateList(list: Bookmark[]) {
     this.visibleList = list;
     this.cdr.detectChanges();

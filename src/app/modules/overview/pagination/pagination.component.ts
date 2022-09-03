@@ -37,6 +37,9 @@ export class PaginationComponent implements OnInit, OnDestroy {
     }
   }
 
+  /**
+   * starts the pagination component
+   */
   private init() {
     this.total = this.bookmarkList.length;
     this.totalPages = this.numSequence(Math.ceil(this.total / this.pageSize))
@@ -52,6 +55,10 @@ export class PaginationComponent implements OnInit, OnDestroy {
     return Array(n);
   }
 
+  /**
+   * Get the new page, sets it as the current one and emits an event with the new paginated list.
+   * @param page 
+   */
   public selectPage(page: number) {
     
     let end = page * this.pageSize;

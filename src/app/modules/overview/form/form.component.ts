@@ -42,6 +42,9 @@ export class FormComponent implements OnInit {
     return this.bookmarkForm.controls;
   }
 
+  /**
+   * Depending on editing it triggers add or edit bookmark
+   */
   onSubmit() {
     if (!this.editing) {
       if (!this.bookmarkService.getStringList().includes(this.bookmarkForm.value['url'])) {
