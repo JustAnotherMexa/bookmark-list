@@ -1,0 +1,13 @@
+@import '/src/app/styles/variables.scss';
+
+.pagination {
+    margin: 1em;
+
+    button {
+        background-color: transparent;
+
+        &.selected {
+            color: $primary;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+:host {
+    display        : flex;
+    flex-direction : column;
+    justify-content: center;
+    align-items    : center;
+    width          : 100%;
+
+    form {
+        max-width      : 90%;
+        width          : 100%;
+        justify-content: center;
+        align-items    : center;
+        text-align     : center;
+        display        : flex;
+
+        input {
+            padding: 1em;
+            text-align: center;
+            outline: transparent;
+            width: 100%;
+            max-width: 40em;
+            margin: 1em 0;
+        }
+    }
+}

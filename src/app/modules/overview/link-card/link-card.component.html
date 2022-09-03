@@ -1,0 +1,16 @@
+<div class="card" *ngIf="bookmark">
+    <ng-container *ngIf="!editing;else editBookmark">
+        <a href="{{bookmark.url}}" target="_blank" rel="noopener noreferrer">
+            {{ bookmark.url }}
+        </a>
+        <div class="buttons">
+            <button class="primary-bg" (click)="edit()">Edit</button>
+            <button class="secondary-bg" (click)="delete()">Delete</button>
+        </div>
+    </ng-container>
+    
+    <ng-template #editBookmark>
+        <app-form [currentBookmark]="bookmark" [bookmarkList]="bookmarkList!" [editing]="true" ></app-form>
+    </ng-template>
+</div>
+

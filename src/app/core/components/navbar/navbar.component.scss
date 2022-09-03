@@ -1,0 +1,10 @@
+@import '/src/app/styles/variables.scss';
+
+:host {
+    background-color: $primary;
+    color: white;
+
+    h1 {
+        padding-left: 1em;
+    }
+}
