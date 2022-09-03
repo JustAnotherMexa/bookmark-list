@@ -19,6 +19,7 @@ export class FormComponent implements OnInit, OnDestroy {
   public bookmarkList: Bookmark[] = [];
   public bookmarkForm!: FormGroup;
   public bookmarks$: Subscription;
+  public regex = '((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)';
 
   constructor(private formBuilder: FormBuilder,
     private router: Router,
@@ -31,7 +32,7 @@ export class FormComponent implements OnInit, OnDestroy {
          */
         this.bookmarkForm.get('url')?.setValidators([
           Validators.required,
-          Validators.pattern('((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)'),
+          Validators.pattern(this.regex),
           repeat(this.bookmarkService.getStringList())
         ])
       });
@@ -44,7 +45,7 @@ export class FormComponent implements OnInit, OnDestroy {
       url: [(this.currentBookmark) ? this.currentBookmark.url : '',
         [
           Validators.required,
-          Validators.pattern('((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)'),
+          Validators.pattern(this.regex),
           repeat(this.bookmarkService.getStringList())
         ]
       ]
