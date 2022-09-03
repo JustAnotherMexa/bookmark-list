@@ -51,7 +51,12 @@ button {
     background-color: $secondary;
 }
 
-@media only screen and (min-width: 600px)  {
+.accent-bg {
+    background-color: $secondary;
+    color: white;
+}
+
+@media only screen and (min-width: 600px) {
     .card {
         max-width: 40em;
     }

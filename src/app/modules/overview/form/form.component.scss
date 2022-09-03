@@ -12,5 +12,14 @@
         align-items    : center;
         text-align     : center;
         display        : flex;
+
+        input {
+            padding: 1em;
+            text-align: center;
+            outline: transparent;
+            width: 100%;
+            max-width: 40em;
+            margin: 1em 0;
+        }
     }
 }
