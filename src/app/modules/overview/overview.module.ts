@@ -7,13 +7,15 @@ import { FormComponent } from './form/form.component';
 import { LinkListComponent } from './link-list/link-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { LinkCardComponent } from './link-card/link-card.component';
 
 
 @NgModule({
   declarations: [
     OverviewComponent,
     FormComponent,
-    LinkListComponent
+    LinkListComponent,
+    LinkCardComponent
   ],
   imports: [
     CommonModule,

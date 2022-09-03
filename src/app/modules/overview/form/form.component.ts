@@ -14,6 +14,9 @@ import { repeat } from 'src/app/shared/util/repeat.validator';
 export class FormComponent implements OnInit {
 
   @Input() bookmarkList: Bookmark[] = [];
+  @Input() currentBookmark: Bookmark | undefined;
+  @Input() editing: boolean = false;
+
   public bookmarkForm!: FormGroup;
 
   constructor(private formBuilder: FormBuilder,
@@ -23,7 +26,7 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     this.bookmarkForm = this.formBuilder.group({
-      url: ['',
+      url: [(this.currentBookmark) ? this.currentBookmark.url : '',
         [
           Validators.required,
           Validators.pattern('((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)'),
@@ -40,10 +43,14 @@ export class FormComponent implements OnInit {
   }
 
   onSubmit() {
-    if (!this.bookmarkService.getStringList().includes(this.bookmarkForm.value['url'])) {
-      this.bookmarkService.addBookmark(this.bookmarkForm.value['url']);
+    if (!this.editing) {
+      if (!this.bookmarkService.getStringList().includes(this.bookmarkForm.value['url'])) {
+        this.bookmarkService.addBookmark(this.bookmarkForm.value['url']);
+      }
+      this.bookmarkForm.reset();
+    } else if(this.currentBookmark){
+      this.bookmarkService.editBookmark(this.currentBookmark.url, this.bookmarkForm.value['url']);
     }
-    this.bookmarkForm.reset();
     this.router.navigate(['thanks'])
   }
 }

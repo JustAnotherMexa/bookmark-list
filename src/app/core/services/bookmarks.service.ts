@@ -43,10 +43,29 @@ export class BookmarksService {
   addBookmark(url: string) {
     this.lastBookmarkAdded = new Bookmark(url);
     this.bookmarkList.push(this.lastBookmarkAdded);
-
     localStorage.setItem('last-bookmark', JSON.stringify(this.lastBookmarkAdded))
+
+    this.updateBookmarks();
+  }
+
+  updateBookmarks() {
     localStorage.setItem('bookmarks', JSON.stringify(this.bookmarkList))
 
     this.bookmarks.next(this.bookmarkList)
+  }
+
+  editBookmark(currentUrl: string, newUrl: string) {
+    const index = this.bookmarkList.findIndex((bookmark) => bookmark.url === currentUrl);
+    this.bookmarkList[index].url = newUrl;
+    this.lastBookmarkAdded = this.bookmarkList[index];
+
+    this.updateBookmarks();
+  }
+
+  deleteBookmark(currentUrl: string) {
+    const index = this.bookmarkList.findIndex((bookmark) => bookmark.url === currentUrl);
+    this.bookmarkList.splice(index,1);
+    
+    this.updateBookmarks();
   }
 }

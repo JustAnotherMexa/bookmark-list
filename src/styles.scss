@@ -12,7 +12,8 @@ body {
     flex-direction  : column;
     text-align      : center;
     align-items     : center;
-    max-width       : 30em;
+    max-width       : 90%;
+    width           : 100%;
     padding         : 1em 2em;
     border-radius   : 10px;
     background-color: $background;
@@ -48,4 +49,10 @@ button {
 
 .secondary-bg {
     background-color: $secondary;
+}
+
+@media only screen and (min-width: 600px)  {
+    .card {
+        max-width: 40em;
+    }
 }

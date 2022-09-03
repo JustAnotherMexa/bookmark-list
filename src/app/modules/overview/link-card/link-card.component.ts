@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Bookmark } from 'src/app/core/services/bookmark.model';
+import { BookmarksService } from 'src/app/core/services/bookmarks.service';
 
 @Component({
   selector: 'app-link-card',
@@ -8,13 +9,22 @@ import { Bookmark } from 'src/app/core/services/bookmark.model';
 })
 export class LinkCardComponent implements OnInit {
 
-  @Input() bookmark: Bookmark | undefined;
-  @Input() editable: boolean = true;
+  @Input() bookmark!: Bookmark;
   @Input() bookmarkList: Bookmark[] | undefined;
 
-  constructor() { }
+  public editing: boolean = false;
+
+  constructor(private bookmarkService: BookmarksService) { }
 
   ngOnInit(): void {
+  }
+
+  edit() {
+    this.editing = true;
+  }
+
+  delete() {
+    this.bookmarkService.deleteBookmark(this.bookmark.url)
   }
 
 }

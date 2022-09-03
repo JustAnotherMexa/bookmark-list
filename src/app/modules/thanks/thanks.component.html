@@ -1,8 +1,12 @@
 <ng-container *ngIf="lastBookmark">
     <div class="card">
         <h2>Thank you for your submission</h2>
-        <a [routerLink]="['/']" routerLinkActive="router-link-active"> Go back to your Dashboard</a>
+        <p>The following bookmar was added: <a href="{{lastBookmark.url}}" target="_blank" rel="noopener noreferrer">
+                {{ lastBookmark.url }}
+            </a>
+        </p>
+
+        <a [routerLink]="['/']" routerLinkActive="router-link-active"> Click here to return to the list</a>
+
     </div>
-    
-    <app-link-card [bookmark]="lastBookmark" [editable]="false" ></app-link-card>
 </ng-container>
