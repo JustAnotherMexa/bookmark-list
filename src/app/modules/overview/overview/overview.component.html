@@ -1,2 +1,4 @@
-<app-form [bookmarkList]="bookmarkList"></app-form>
-<app-link-list [bookmarkList]="bookmarkList"></app-link-list>
+<ng-container *ngIf="bookmarkList">
+    <app-form></app-form>
+    <app-link-list [bookmarkList]="bookmarkList"></app-link-list>
+</ng-container>

@@ -11,18 +11,33 @@ import { repeat } from 'src/app/shared/util/repeat.validator';
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
-export class FormComponent implements OnInit {
+export class FormComponent implements OnInit, OnDestroy {
 
-  @Input() bookmarkList: Bookmark[] = [];
   @Input() currentBookmark: Bookmark | undefined;
   @Input() editing: boolean = false;
-
+  
+  public bookmarkList: Bookmark[] = [];
   public bookmarkForm!: FormGroup;
+  public bookmarks$: Subscription;
 
   constructor(private formBuilder: FormBuilder,
-    private bookmarkService: BookmarksService,
-    private router: Router) {
-  }
+    private router: Router,
+    private bookmarkService: BookmarksService) {
+      this.bookmarks$ = bookmarkService.bookmarks.subscribe((list: Bookmark[]) => {
+        this.bookmarkList = list;
+
+        /**
+         * Had to do this to keep repeat validator updated after deleting a bookmark
+         */
+        this.bookmarkForm.get('url')?.setValidators([
+          Validators.required,
+          Validators.pattern('((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)'),
+          repeat(this.bookmarkService.getStringList())
+        ])
+      });
+    }
+
+
 
   ngOnInit(): void {
     this.bookmarkForm = this.formBuilder.group({
@@ -30,10 +45,16 @@ export class FormComponent implements OnInit {
         [
           Validators.required,
           Validators.pattern('((http|https)://)(www.)?[a-zA-Z0-9@:%._\\+~#?&//=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%._\\+~#?&//=]*)'),
-          repeat(this.bookmarkList.map(item => item.url))
+          repeat(this.bookmarkService.getStringList())
         ]
       ]
     })
+  }
+
+  ngOnDestroy(): void {
+      if (this.bookmarks$) {
+        this.bookmarks$.unsubscribe();
+      }
   }
 
 

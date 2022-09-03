@@ -1,6 +1,6 @@
-<ng-container *ngIf="bookmarkList && visibleList">
+<ng-container *ngIf="bookmarkList.length > 0 && visibleList">
     <ng-container *ngFor="let bookmark of visibleList">
-        <app-link-card [bookmark]="bookmark" [bookmarkList]="bookmarkList"></app-link-card>
+        <app-link-card [bookmark]="bookmark"></app-link-card>
     </ng-container>
     
     <app-pagination (paginatedList)="updateList($event)"></app-pagination>

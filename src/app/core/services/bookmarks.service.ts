@@ -48,9 +48,11 @@ export class BookmarksService {
     let tempList = JSON.parse(localStorage.getItem('bookmarks')!);
     this.bookmarkList = [];
 
-    tempList.forEach((bookmark: { url: string }) => {
-      this.bookmarkList.push(new Bookmark(bookmark['url']))
-    });
+    if (tempList) {
+      tempList.forEach((bookmark: { url: string }) => {
+        this.bookmarkList.push(new Bookmark(bookmark['url']))
+      });
+    }
   }
 
   /**

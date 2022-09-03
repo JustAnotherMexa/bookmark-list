@@ -10,7 +10,6 @@ import { BookmarksService } from 'src/app/core/services/bookmarks.service';
 export class LinkCardComponent implements OnInit {
 
   @Input() bookmark!: Bookmark;
-  @Input() bookmarkList: Bookmark[] | undefined;
 
   public editing: boolean = false;
 
