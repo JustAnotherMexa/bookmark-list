@@ -8,6 +8,7 @@ import { LinkListComponent } from './link-list/link-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { LinkCardComponent } from './link-card/link-card.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LinkCardComponent } from './link-card/link-card.component';
     OverviewComponent,
     FormComponent,
     LinkListComponent,
-    LinkCardComponent
+    LinkCardComponent,
+    PaginationComponent
   ],
   imports: [
     CommonModule,

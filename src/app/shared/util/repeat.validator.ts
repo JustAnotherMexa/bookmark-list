@@ -8,7 +8,6 @@ import { Bookmark } from "src/app/core/services/bookmark.model";
  */
 export function repeat(list: string[]) {
   return (control: AbstractControl): { [key: string]: boolean } | null => {
-    console.info(list)
     if (control.value !== null && list.includes(control.value)) {
       return { repeat: true };
     }

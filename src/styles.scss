@@ -38,22 +38,25 @@ button {
     padding        : 0 16px;
     border-radius  : 4px;
     overflow       : visible;
-    color          : white;
     font-family    : Roboto, Helvetica Neue, sans-serif;
     font-size      : 14px;
 }
 
 .primary-bg {
     background-color: $primary;
+    color           : white;
+
 }
 
 .secondary-bg {
     background-color: $secondary;
+    color           : white;
+
 }
 
 .accent-bg {
     background-color: $secondary;
-    color: white;
+    color           : white;
 }
 
 @media only screen and (min-width: 600px) {

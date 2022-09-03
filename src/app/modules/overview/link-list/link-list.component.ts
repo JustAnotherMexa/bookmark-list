@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnChanges, OnInit } from '@angular/core';
 import { Bookmark } from 'src/app/core/services/bookmark.model';
 
 @Component({
@@ -9,11 +9,17 @@ import { Bookmark } from 'src/app/core/services/bookmark.model';
 export class LinkListComponent implements OnInit {
 
   @Input() bookmarkList: Bookmark[] = [];
+  
+  public visibleList: Bookmark[] = [];
 
-  constructor() { }
+  constructor(private cdr: ChangeDetectorRef) { }
 
   ngOnInit(): void {
-    console.info(this.bookmarkList)
+  }
+
+  updateList(list: Bookmark[]) {
+    this.visibleList = list;
+    this.cdr.detectChanges();
   }
 
 }

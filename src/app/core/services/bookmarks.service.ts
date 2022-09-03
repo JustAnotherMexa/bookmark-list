@@ -7,8 +7,8 @@ import { Bookmark } from './bookmark.model';
 })
 export class BookmarksService {
 
-  private bookmarkList: Bookmark[] = [];
   private lastBookmarkAdded!: Bookmark;
+  private bookmarkList: Bookmark[] = [];
   public bookmarks = new Subject<Bookmark[]>(); 
 
   constructor() {
@@ -37,7 +37,6 @@ export class BookmarksService {
     tempList.forEach((bookmark: { url: string }) => {
       this.bookmarkList.push(new Bookmark(bookmark['url']))
     });
-    console.info(this.bookmarkList)
   }
 
   addBookmark(url: string) {
